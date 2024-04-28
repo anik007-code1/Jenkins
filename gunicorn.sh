@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source env/bin/activate
+source venv/bin/activate
 
 # shellcheck disable=SC2164
 cd /var/lib/jenkins/workspace/django_cicd/app
