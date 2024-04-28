@@ -13,6 +13,7 @@ echo "Migrations done"
 
 # shellcheck disable=SC2164
 cd /var/lib/jenkins/workspace/django_cicd
+ls -l /var/lib/jenkins/workspace/django_cicd/
 
 sudo cp -rf gunicorn.socket /etc/systemd/system/
 sudo cp -rf gunicorn.service /etc/systemd/system/
@@ -20,6 +21,7 @@ sudo cp -rf gunicorn.service /etc/systemd/system/
 echo "$USER"
 echo "$PWD"
 
+ls -l /var/lib/jenkins/workspace/django_cicd/
 
 
 sudo systemctl daemon-reload
