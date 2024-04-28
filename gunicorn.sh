@@ -2,6 +2,7 @@
 
 source env/bin/activate
 
+# shellcheck disable=SC2164
 cd /var/lib/jenkins/workspace/django_cicd/app
 
 python3 manage.py makemigrations
@@ -10,6 +11,7 @@ python3 manage.py collectstatic -- no-input
 
 echo "Migrations done"
 
+# shellcheck disable=SC2164
 cd /var/lib/jenkins/workspace/Jenkins
 
 sudo cp -rf gunicorn.socket /etc/systemd/system/
