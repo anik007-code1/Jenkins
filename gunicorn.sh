@@ -4,7 +4,7 @@
 source venv/bin/activate
 
 # Navigate to the application directory
-cd /var/lib/jenkins/workspace/django_cicd/app || exit 1
+cd /var/lib/jenkins/workspace/django-cicd/app || exit 1
 
 # Run Django migrations
 if python3 manage.py makemigrations && python3 manage.py migrate; then
@@ -23,7 +23,7 @@ else
 fi
 
 # Navigate to the project directory
-cd /var/lib/jenkins/workspace/django_cicd || exit 1
+cd /var/lib/jenkins/workspace/django-cicd || exit 1
 
 # Copy Gunicorn socket and service files
 if sudo cp -rf gunicorn.socket /etc/systemd/system/ && sudo cp -rf gunicorn.service /etc/systemd/system/; then
