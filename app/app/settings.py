@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-$!j$dqr*=2atu8dugimfko4=a0b3*pveh^63-101nsp59#w$d7
 DEBUG = True
 
 ALLOWED_HOSTS = ["aniklpu.cloud"]
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
