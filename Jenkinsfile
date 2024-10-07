@@ -1,29 +1,45 @@
-pipeline{
+pipeline {
     agent any
+
     stages {
-        stage('Setup Python Virtual ENV for dependencies'){
+        stage('Checkout SCM') {
             steps {
-                 sh '''
-                 chmod +x venvsetup.sh
-                 ./venvsetup.sh
-                 '''
+                script {
+                    try {
+                        checkout scm
+                    } catch (Exception e) {
+                        error("Checkout failed: ${e.message}")
+                    }
+                }
             }
         }
-        stage('Setup Gunicorn Setup'){
+        stage('Setup Python Virtual ENV for dependencies') {
             steps {
-                sh '''
-                chmod +x gunicorn.sh
-                ./gunicorn.sh
-                '''
+                sh 'chmod +x venvsetup.sh'
+                sh './venvsetup.sh'
             }
         }
-        stage('setup NGINX'){
+        stage('Setup Gunicorn Setup') {
             steps {
-                sh '''
-                chmod +x nginx.sh
-                ./nginx.sh
-                '''
+                sh 'chmod +x gunicorn.sh'
+                sh './gunicorn.sh'
             }
+        }
+        stage('Setup NGINX') {
+            steps {
+                sh 'chmod +x nginx.sh'
+                sh './nginx.sh'
+            }
+        }
+    }
+
+    post {
+        failure {
+            // Notify or log the failure
+            echo 'Pipeline failed!'
+        }
+        success {
+            echo 'Pipeline succeeded!'
         }
     }
 }
