@@ -69,7 +69,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, "You are now logged in.")
-            return redirect('home')
+            return redirect('category_list')
         else:
             messages.error(request, "Invalid credentials. Please try again.")
             return redirect('login')
@@ -81,4 +81,4 @@ def login(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, "You have been logged out.")
-    return redirect('home')
+    return redirect('category_list')
