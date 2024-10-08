@@ -13,6 +13,5 @@ ExecStart=/var/lib/jenkins/workspace/django-cicd/venv/bin/gunicorn --workers 3 -
 [Install]
 WantedBy=multi-user.target
 
-
 [Install]
 WantedBy=multi-user.target
