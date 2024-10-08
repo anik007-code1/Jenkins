@@ -1,10 +1,18 @@
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from home.models import PDFDocument
+from django.shortcuts import get_object_or_404
+from django.http import FileResponse
 
+
+def PDFDetailView(request, slug):
+    pdf = get_object_or_404(PDFDocument, slug=slug)
+    return FileResponse(open(pdf.pdf_file.path, 'rb'), content_type='application/pdf')
 
 def home(request):
-    return render(request, 'home.html')
+    pdf = PDFDocument.objects.all()
+    return render(request, 'home.html', {'pdfs': pdf})
 
 
 def register(request):
